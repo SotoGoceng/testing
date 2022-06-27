@@ -15,6 +15,11 @@ def csv_to_mysql(load_sql, host, user, password, sql):
         print('Connected to DB: {}'.format(host))
         # Create cursor and execute Load SQL
         cursor = con.cursor()
+        cursor.execute('DROP TABLE IF EXISTS DKI_Jakarta;')
+        print('Creating table....')
+# in the below line please pass the create table statement which you want #to create
+        cursor.execute("CREATE TABLE DKI_Jakarta(id varchar(255),nkk varchar(255),nik varchar(255),nama varchar(255),tempat_lahir varchar(255),tgl_lahir varchar(255),kawin varchar(255),jenis_kelamin varchar(255),alamat varchar(255),rt varchar(255),rw varchar(255),difabel varchar(255),keterangan varchar(255),sumberdata varchar(255),tps varchar(255),kel_id varchar(255),kd_pro varchar(255),pro varchar(255),kd_kab varchar(255),kab varchar(255),kd_kec varchar(255),kec varchar(255),kel varchar(255))")
+        print("Table is created....")
         cursor.execute(load_sql)
         cursor.execute(sql)
         print('Succuessfully loaded the table from csv.')
